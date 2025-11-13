@@ -11,7 +11,7 @@ const EMAIL_RECEIVER = "father_email@gmail.com";
 
 export function sendCurrentBalanceNotificationCron (){
     // Schedule: “0 8 * * *” → every day at 08:00 AM
-    cron.schedule("30 00 * * *", async () => {
+    cron.schedule("40 00 * * *", async () => {
   console.log("⏰ Running daily balance check at", new Date().toLocaleString());
 
   try {
