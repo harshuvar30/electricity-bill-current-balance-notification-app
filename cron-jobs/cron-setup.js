@@ -11,14 +11,14 @@ const EMAIL_RECEIVER = "father_email@gmail.com";
 
 export function sendCurrentBalanceNotificationCron (){
     // Schedule: “0 8 * * *” → every day at 08:00 AM
-    cron.schedule("06 00 * * *", async () => {
+    cron.schedule("30 00 * * *", async () => {
   console.log("⏰ Running daily balance check at", new Date().toLocaleString());
 
   try {
     const balance = await getCurrentBalance();
     console.log(`💡 Current balance: ₹${balance}`);
 
-    if (balance < 40) {
+    if (balance < 60) {
       await sendEmail({
         to: 'hv9796923@gmail.com',
         subject: "⚠️ Low Electricity Balance Alert",
