@@ -18,7 +18,7 @@ export function sendCurrentBalanceNotificationCron (){
     const balance = await getCurrentBalance();
     console.log(`💡 Current balance: ₹${balance}`);
 
-    if (balance < 60) {
+    if (balance < 40) {
       await sendEmail({
         to: 'hv9796923@gmail.com',
         subject: "⚠️ Low Electricity Balance Alert",
