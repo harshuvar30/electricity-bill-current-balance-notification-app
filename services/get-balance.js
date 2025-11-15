@@ -6,7 +6,8 @@ export async function getCurrentBalance () {
     '--start-maximized',
     `--disable-blink-features=AutomationControlled`,
     `--disable-web-security`,
-    `--allow-running-insecure-content`
+    `--allow-running-insecure-content`,
+    "--no-sandbox"
   ],
   defaultViewport: null,
   headless: true
