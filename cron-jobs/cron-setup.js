@@ -5,13 +5,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const CONSUMER_ID = "123456789";  // replace with your ID
-const THRESHOLD = 100;            // ₹100 minimum balance
-const EMAIL_RECEIVER = "father_email@gmail.com";
 
 export function sendCurrentBalanceNotificationCron (){
     // Schedule: “0 8 * * *” → every day at 08:00 AM
-    cron.schedule("*/5 * * * *", async () => {
+    cron.schedule("25 01 * * *", async () => {
   console.log("⏰ Running daily balance check at", new Date().toLocaleString());
 
   try {
@@ -20,7 +17,7 @@ export function sendCurrentBalanceNotificationCron (){
 
     if (balance < 60) {
       await sendEmail({
-        to: 'hv9796923@gmail.com',
+        to: 'mytechacccount@gmail.com',
         subject: "⚠️ Low Electricity Balance Alert",
         text: `Your NBPDCL balance is ₹${balance}. Please recharge soon.`,
       });
@@ -29,6 +26,11 @@ export function sendCurrentBalanceNotificationCron (){
       console.log("✅ Balance above threshold, no alert sent.");
     }
   } catch (err) {
+    await sendEmail({
+        to: 'mytechacccount@gmail.com',
+        subject: "⚠️ ERROR Fetching Electricity Balance",
+        text: `There was an error fetching your NBPDCL balance: ${err}`,
+      });
     console.error("❌ Error fetching balance or sending mail:", err);
   }
 }, {timezone: "Asia/Kolkata"});
