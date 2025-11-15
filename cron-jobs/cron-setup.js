@@ -8,7 +8,7 @@ dotenv.config();
 
 export function sendCurrentBalanceNotificationCron (){
     // Schedule: “0 8 * * *” → every day at 08:00 AM
-    cron.schedule("32 01 * * *", async () => {
+    cron.schedule("40 01 * * *", async () => {
   console.log("⏰ Running daily balance check at", new Date().toLocaleString());
 
   try {
