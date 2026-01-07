@@ -12,7 +12,7 @@ export async function getCurrentBalance() {
       headless: true,
     });
     const page = await browser.newPage();
-
+    page.setDefaultNavigationTimeout(60000);
     await page.goto(
       "https://wss.nbpdcl.co.in/cportal/#/guest/secure/searchbill",
       {
